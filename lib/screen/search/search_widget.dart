@@ -18,6 +18,9 @@ class Search extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         decoration: InputDecoration(
+          filled: true,
+          fillColor:
+          Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
           hintText: 'Search restaurant.',
           hintStyle: Theme.of(context).textTheme.titleMedium,
           prefixIcon: const Icon(Icons.search),

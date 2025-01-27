@@ -21,10 +21,20 @@ dependencies:
   google_fonts: ^6.2.1
   # Library Flutter Rating Stars package for show rating stars in application
   flutter_rating_stars: ^1.1.0
+  # Library Sqflite for save data local in application
+  sqflite: ^2.4.1
+  # Library Shared Preferences for save data local in application
+  shared_preferences: ^2.3.5
+  # Library for handling notification
+  flutter_timezone: ^4.0.0
+  timezone: ^0.10.0
+  flutter_local_notifications: ^18.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: ^5.4.4
+  build_runner: ^2.0.0
 
   flutter_lints: ^4.0.0
 

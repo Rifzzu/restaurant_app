@@ -25,9 +25,9 @@ class _RestaurantHomeScreenState extends State<RestaurantHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         title: const Text('Restaurant List'),
-      ),
+      ),*/
       body: Consumer<RestaurantListProvider>(
         builder: (context, value, child) {
           return SafeArea(
@@ -36,7 +36,7 @@ class _RestaurantHomeScreenState extends State<RestaurantHomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.only(left: 16, top: 12, right: 16),
                     child: Text(
                       'Recommendation restaurant for you!',
                       style: Theme.of(context).textTheme.titleLarge,

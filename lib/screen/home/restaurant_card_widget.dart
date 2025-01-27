@@ -16,6 +16,7 @@ class RestaurantCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
+        key: Key('restaurant_card_${restaurant.id}'),
         onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.symmetric(
