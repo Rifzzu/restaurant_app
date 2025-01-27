@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_app/component/message_widget.dart';
+import 'package:restaurant_app/data/model/restaurant.dart';
 import 'package:restaurant_app/provider/detail/restaurant_detail_provider.dart';
+import 'package:restaurant_app/provider/favorite/favorite_icon_provider.dart';
+import 'package:restaurant_app/screen/detail/favorite_icon_widget.dart';
 import 'package:restaurant_app/static/restaurant_detail_state.dart';
 import 'body_detail_widget.dart';
 
@@ -30,6 +33,32 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Restaurant Detail'),
+        actions: [
+          ChangeNotifierProvider(
+            create: (context) => FavoriteIconProvider(),
+            child: Consumer<RestaurantDetailProvider>(
+              builder: (context, value, child) {
+                return switch (value.resultState) {
+                  RestaurantDetailLoadedState(restaurant: var restaurant) =>
+                      FavoriteIconWidget(
+                          restaurant: Restaurant(
+                            id: restaurant.id,
+                            name: restaurant.name,
+                            description: restaurant.description,
+                            pictureId: restaurant.pictureId,
+                            city: restaurant.city,
+                            rating: restaurant.rating,
+                          ),
+                      ),
+                  _ => const SizedBox(),
+                };
+              },
+            ),
+          ),
+        ],
+      ),
       body: Consumer<RestaurantDetailProvider>(
         builder: (context, value, child) {
           return switch (value.resultState) {
@@ -50,22 +79,6 @@ class _DetailScreenState extends State<DetailScreen> {
             _ => const SizedBox(),
           };
         },
-      ),
-      floatingActionButton: backButton(context),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-    );
-  }
-
-  Widget backButton(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.black),
-        onPressed: () => Navigator.pop(context),
       ),
     );
   }
